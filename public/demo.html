@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Index Exchange</title>
+    <link rel="stylesheet" href="bootstrap.min.css" >
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="container">
+    <h1>Quant Edge's test</h1>
+    <table>
+        <tr class="top">
+            <td ng-click="display()">S&P/ASX</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td ng-click="topGain()" ng-class="{focus: flag == 1}">Top GAINERS</td>
+            <td ng-click="topLose()" ng-class="{focus: flag == 2}">Top LOSERS</td>
+        </tr>
+        <tr class="header">
+            <td>Code</td>
+            <td>Company</td>
+            <td>Price</td>
+            <td>Value</td>
+            <td>Change</td>
+            <td>%Change</td>
+        </tr>
+        <tr ng-repeat="com in arrComs | orderBy: order | limitTo: limit" class="info">
+            <td>{{com.code}}</td>
+            <td>{{com.company}}</td>
+            <td>{{com.currentPrice}}</td>
+            <td>{{com.value}}</td>
+            <td style="color:{{com.color}}">{{com.change}}</td>
+            <td style="color:{{com.color}}">{{com.perChange}}%</td>
+        </tr>
+    </table>
+</div>
+<script type='text/javascript' src="angular.min.js"></script>
+<script src="script-demo.js"></script>
+
+</body>
+</html>
